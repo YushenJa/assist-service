@@ -17,6 +17,7 @@
     "start": "node dist/http/server.js"
   },
   "dependencies": {
+    "@google-cloud/vertexai": "^1.10.0",
     "express": "^5.1.0",
     "undici-types": "^7.16.0"
   },
