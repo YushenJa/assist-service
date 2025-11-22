@@ -9,7 +9,6 @@
 запускаешь сервер на порту (обычно порт берёшь из process.env.PORT — Cloud Run его задаст).*/
 
 import express, { Application } from 'express'
-import { loggingMiddleware} from './middleware/logging'
 
 
 export function createApp(): Application {
@@ -17,7 +16,6 @@ export function createApp(): Application {
 
     app.use(express.json())
 
-    app.use (loggingMiddleware)
 
     return app
     
