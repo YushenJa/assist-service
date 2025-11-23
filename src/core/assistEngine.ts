@@ -24,8 +24,14 @@
 
 import { VertexAI } from '@google-cloud/vertexai';
 
-const vertex_ai = new VertexAI({project: 'ТВОЙ_PROJECT_ID', location: 'us-central1'});
-const model = 'gemini-1.5-flash-001';
+const PROJECT_ID = 'ausgabenmanager-477511'; 
+const LOCATION = 'europe-west9';
+
+const vertex_ai = new VertexAI({
+    project: PROJECT_ID, 
+    location: LOCATION
+});
+const model = 'gemini-2.0-flash-001';
 
 const generativeModel = vertex_ai.preview.getGenerativeModel({
   model: model,
@@ -34,3 +40,27 @@ const generativeModel = vertex_ai.preview.getGenerativeModel({
     temperature: 0.5, 
   },
 });
+
+export async function generateResp (prompt: string): Promise<string> {
+  try {
+    console.log('Frage wird gesendet: ... ');
+    const chatSession = generativeModel.startChat({});
+    const result = await chatSession.sendMessage(prompt);
+
+    if (!result.response.candidates || result.response.candidates.length === 0) {
+      throw new Error('leere Antwort');
+    }
+
+    const responseText = result.response.candidates[0].content.parts[0].text;
+
+    if (!responseText) {
+      throw new Error ("leere Antwort");
+    }
+
+    return responseText;
+
+  } catch (error) {
+    console.error ("Fehler ...");
+    throw error;
+  }
+}
