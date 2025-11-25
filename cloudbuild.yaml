@@ -8,3 +8,6 @@ steps:
 
 images:
   - 'eu.gcr.io/$PROJECT_ID/assist-service'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
