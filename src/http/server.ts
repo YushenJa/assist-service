@@ -1,22 +1,47 @@
-/*Это «точка входа» HTTP-части. Здесь ты:
+/* 
 
-создаёшь HTTP-приложение (через Express/Fastify — не важно, какой фреймворк);
+Dies ist der „Einstiegspunkt“ des HTTP-Teils. Hier:
 
-подключаешь маршруты (из routes.ts);
+25.11.2025
 
-подключаешь мидлвары (логирование, обработка ошибок и т. д.);
+* erstellen wir eine HTTP-Anwendung (über Express) (+)
 
-запускаешь сервер на порту (обычно порт берёшь из process.env.PORT — Cloud Run его задаст).*/
+* verbinden wir Routen (aus routes.ts) (+)
+
+* verbinden wir Middleware (Protokollierung, Fehlerbehandlung usw.) (-)
+
+* starten wir den Server auf dem Port (normalerweise nehmen Sie den Port aus process.env.PORT – Cloud Run legt ihn fest). (+)
+
+*/
 
 import express, { Application } from 'express'
+import cors from 'cors';
+import routes from './routes';
 
 
 export function createApp(): Application {
-    const app = express()
+    const app = express();
 
+    //Cross-Origin Resource Sharing (Entscheidet, wen man reinlässt. Momentan lassen alle rein)
+    app.use(cors());
+
+    //nur json-Format Anfragen
     app.use(express.json())
 
+    //"Rerouting" (bearbeitet Anfragen)
+    app.use(routes);
 
     return app
-    
+
+}
+
+
+if (require.main === module) {
+    const app = createApp();
+    const PORT = process.env.PORT ? Number(process.env.PORT) : 3000
+
+    // warten auf Anfragen 
+    app.listen(PORT, () => {
+        console.log(`✅ Server läuft auf http://localhost:${PORT}`);
+    });
 }

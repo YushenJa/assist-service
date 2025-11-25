@@ -1,24 +1,28 @@
-/* Главный файл логики
+/* Logikdatei
 
-1. Принимаем нормализованный запрос (уже проверенный на HTTP-уровне).
+23.11.2025
 
-2. Решаем, в каком режиме работать:
+1. Wir nehmen eine normalisierte Anfrage entgegen (die bereits auf HTTP-Ebene überprüft wurde) (+)
 
-    если mode = "FAQ" → вызвать FAQ-модуль (src/faq/faqEngine);
+2. Wir entscheiden, in welchem Modus wir arbeiten wollen:
 
-    если mode = "AI" →
+    wenn mode = „FAQ” -> FAQ-Modul aufrufen (src/faq/faqEngine) (-)
 
-        вызвать Context Resolver (src/context/resolver),
+     wenn mode = „AI“ ->
 
-        собрать RAG-контекст (если будет),
+        Context Resolver aufrufen (src/context/resolver) (-)
 
-        вызвать AI-движок (например, отдельный модуль с вызовом Vertex/Groq),
+        RAG-Kontext zusammenstellen (falls vorhanden) (-)
 
-        собрать ответ.
+        AI-Engine aufrufen (Aufruf von Vertex) (+)
 
-3. На основе ответа из faq или ai формируем финальный объект с answer, citations, actions.
+         Antwort zusammenstellen (+)
 
-Важно: assistEngine не знает про HTTP, Express и т. п. Это просто «функция»: вход → разумное решение → выход. */
+3.  Auf der Grundlage der Antwort aus faq oder ai bilden wir das endgültige Objekt mit answer, citations, actions (+ - -)
+
+Wichtig: assistEngine kennt HTTP, Express usw. nicht. Es handelt sich lediglich um eine "Funktion": Eingang → sinnvolle Entscheidung → Ausgang. 
+
+*/
 
 
 
