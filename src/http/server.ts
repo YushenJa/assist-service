@@ -22,8 +22,23 @@ import routes from './routes';
 export function createApp(): Application {
     const app = express();
 
+    const corsOptions = {
+        origin: true,
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept']
+    };
+
+    app.use((req, res, next) => {
+        console.log(`[Request]: ${req.method} ${req.originalUrl}`);
+        next();
+    });
+
     //Cross-Origin Resource Sharing (Entscheidet, wen man reinlässt. Momentan lassen alle rein)
-    app.use(cors());
+    app.use(cors(corsOptions));
+
+    app.options(/(.*)/, cors(corsOptions));
+
 
     //nur json-Format Anfragen
     app.use(express.json())
