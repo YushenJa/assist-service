@@ -38,7 +38,7 @@ export function createApp(): Application {
 
 if (require.main === module) {
     const app = createApp();
-    const PORT = process.env.PORT ? Number(process.env.PORT) : 3000
+    const PORT = process.env.PORT ? Number(process.env.PORT) : 8080
 
     // warten auf Anfragen 
     app.listen(PORT, () => {
