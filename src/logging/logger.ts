@@ -1,9 +1,9 @@
 /*
 
-* единая точка для логирования:
+* Logging:
 
-    * info / warn / error,
+    * info / warn / error
 
-    * автоматическое добавление requestId, mode, userId, accountId (без PII).
+    * automatisches Hinzufügen von requestId, mode, userId, accountId (ohne PII)
 
 */

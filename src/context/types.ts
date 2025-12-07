@@ -1,7 +1,22 @@
-/* Описывает, какие факты ты отдаёшь движку ассистента:
+/* 
 
-* список файлов с разрешёнными полями (id, дата, статус, сумма, нормализованный Händler);
+* Beschreibt, welche Fakten wir an die Assistenten-Engine übergeben:
 
-* список транзакций с базовыми атрибутами;
+    * Liste der Dateien mit zulässigen Feldern (ID, Datum, Status, Betrag, normalisierter Händler);
 
-* ограничения по количеству/размеру.*/
+    * Liste der Transaktionen mit grundlegenden Attributen;
+
+    * Beschränkungen hinsichtlich Anzahl/Größe.
+
+* Chat & Speicher
+
+*/
+
+export interface HistoryItem {
+    role: 'user' | 'model';
+    parts: [{text: string}];
+}
+
+export interface ChatSession {
+    history: HistoryItem[];
+}

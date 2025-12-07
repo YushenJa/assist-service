@@ -1,4 +1,6 @@
-/* Damit wir eine Datei haben, in der alle vom Dienst verstandenen Pfade sichtbar sind.
+/* 
+
+Damit wir eine Datei haben, in der alle vom Dienst verstandenen Pfade sichtbar sind.
 
 In unserem Fall ist der Hauptpfad: POST /chat.
 
@@ -10,7 +12,9 @@ In unserem Fall ist der Hauptpfad: POST /chat.
 * Aufruf des "Gehirns" des Assistenten aus src/core (+)
 * Rückgabe der Antwort im JSON-Format (+)
 
-Wichtig: routes.ts darf nicht selbst überlegen, wie es antworten soll. Es verbindet lediglich den HTTP-Request mit der richtigen Funktion aus der Logik.*/
+Wichtig: routes.ts darf nicht selbst überlegen, wie es antworten soll. Es verbindet lediglich den HTTP-Request mit der richtigen Funktion aus der Logik.
+
+*/
 
 
 import { Router, Request, Response } from "express";
@@ -20,16 +24,18 @@ const router = Router();
 
 router.post('/chat', async (req: Request, res: Response): Promise<void> => {
     try {
-        const {message} = req.body;
+        const {message, sessionId} = req.body;
 
         if (!message) {
             res.status(400).json({ error: 'Message is required'});
             return;
         }
 
+        const currentSessionId = sessionId || 'test-user';
+
         console.log('(Router) Nachricht erhalten:', message);
 
-        const aiReply = await generateResp(message);
+        const aiReply = await generateResp(message, currentSessionId);
 
         res.json({
             reply: aiReply,

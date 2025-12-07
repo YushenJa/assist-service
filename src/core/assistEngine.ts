@@ -27,6 +27,8 @@ Wichtig: assistEngine kennt HTTP, Express usw. nicht. Es handelt sich lediglich 
 
 
 import { VertexAI } from '@google-cloud/vertexai';
+import { memoryManager } from '../context/memory';
+import { Session } from 'inspector';
 
 const PROJECT_ID = 'ausgabenmanager-477511'; 
 const LOCATION = 'europe-west9';
@@ -45,10 +47,12 @@ const generativeModel = vertex_ai.preview.getGenerativeModel({
   },
 });
 
-export async function generateResp (prompt: string): Promise<string> {
+export async function generateResp (prompt: string, sessionID: string = 'default-user'): Promise<string> {
   try {
+    const history = memoryManager.getHistory(sessionID)
     console.log('Frage wird gesendet: ... ');
-    const chatSession = generativeModel.startChat({});
+    const chatSession = generativeModel.startChat({history: history});
+
     const result = await chatSession.sendMessage(prompt);
 
     if (!result.response.candidates || result.response.candidates.length === 0) {
@@ -60,6 +64,9 @@ export async function generateResp (prompt: string): Promise<string> {
     if (!responseText) {
       throw new Error ("leere Antwort");
     }
+
+    memoryManager.addMessage(sessionID, 'user', prompt)
+    memoryManager.addMessage(sessionID, 'model', responseText);
 
     return responseText;
 

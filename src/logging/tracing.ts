@@ -1,7 +1,7 @@
 /*
 
-* функции для генерации и прокидывания requestId по всем слоям;
+* Funktionen zum Generieren und Weiterleiten von requestId über alle Schichten hinweg;
 
-* при желании — интеграция с OpenTelemetry / Cloud Logging / Trace.
+* Integration mit OpenTelemetry / Cloud Logging / Trace.
 
 */
