@@ -1,16 +1,35 @@
-/* 
+/*
 
-1. Получает нормализованный вопрос (message + locale).
+1. Ruft die normalisierte Frage ab (message + locale).
 
-2. Находит лучший FAQ-пункт:
+2. Findet den passendsten FAQ-Eintrag:
 
-    по ключевым словам/тегам,
-    по простому скорингу совпадений.
+    anhand von Schlüsselwörtern/Tags,
+    anhand einer einfachen Trefferquote*
 
-3. Возвращает структуру вида:
+3. Gibt eine Struktur im folgenden Format zurück:
 
-    текст ответа;
-    список источников (ID внутренних FAQ-записей);
-    предлагаемые действия (deep-link и опционально quick-action).
+    Antworttext;
+    Liste der Quellen (IDs interner FAQ-Einträge);
+    Vorgeschlagene Aktionen (Deep-Link und optional Schnellaktion).
 
-Если ничего не подходит — простой fallback: „Ich habe nichts Passendes gefunden…“ + список популярных тем.*/
+Falls keine Übereinstimmung gefunden wird, wird eine einfache Fallback-Option angezeigt: „Ich habe nichts Passendes gefunden…“ + Liste beliebter Themen.
+
+*/
+
+import { faqDataBase, FAQItem } from "./faqData";
+
+export function searchKnowledgeBase (userQuery: string):    FAQItem | null {
+    const query = userQuery.toLowerCase();
+
+    for (const item of faqDataBase) {
+        const found = item.keywords.some(keyword => query.includes(keyword.toLowerCase()))
+    
+        if (found) {
+            return item;
+        }
+    }
+
+    return null;
+
+}
