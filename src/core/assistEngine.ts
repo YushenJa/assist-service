@@ -93,7 +93,7 @@ SICHERHEITSPROTOKOLL (STRENG BEFOLGEN):
 const generativeModel = vertex_ai.preview.getGenerativeModel({
   model: model,
   systemInstruction: {
-    parts: [{test: SYSTEM_PROMPT}]
+    parts: [{text: SYSTEM_PROMPT}]
   },
   generationConfig: {
     maxOutputTokens: 2048,
