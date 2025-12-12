@@ -93,6 +93,7 @@ SICHERHEITSPROTOKOLL (STRENG BEFOLGEN):
 const generativeModel = vertex_ai.preview.getGenerativeModel({
   model: model,
   systemInstruction: {
+    role: 'system',
     parts: [{text: SYSTEM_PROMPT}]
   },
   generationConfig: {
