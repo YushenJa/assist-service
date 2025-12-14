@@ -10,9 +10,9 @@
 
      wenn mode = „AI“ ->
 
-        Context Resolver aufrufen (src/context/resolver) (-)
+        Context Resolver aufrufen (+)
 
-        RAG-Kontext zusammenstellen (falls vorhanden) (-)
+        RAG-Kontext zusammenstellen (falls vorhanden) (+)
 
         AI-Engine aufrufen (Aufruf von Vertex) (+)
 

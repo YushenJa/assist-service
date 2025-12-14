@@ -1,4 +1,4 @@
-import { HistoryItem } from "./types";
+import { HistoryItem } from './types';
 
 //speichern alle Chats. Key = SessionID, Value = Liste der Nachrichten
 const sessions: Record<string, HistoryItem[]> = {};

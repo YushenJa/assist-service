@@ -14,9 +14,13 @@ Dies ist der „Einstiegspunkt“ des HTTP-Teils. Hier:
 
 */
 
-import express, { Application } from 'express'
+import express, { Application, Request, Response, NextFunction } from 'express'
 import cors from 'cors';
 import routes from './routes';
+import dotenv from 'dotenv';
+import  {apiKeyMiddleware } from './middleware/auth'
+
+dotenv.config();
 
 
 export function createApp(): Application {
@@ -26,7 +30,7 @@ export function createApp(): Application {
         origin: true,
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept']
+        allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'x-api-key']
     };
 
     app.use((req, res, next) => {
@@ -36,14 +40,11 @@ export function createApp(): Application {
 
     //Cross-Origin Resource Sharing (Entscheidet, wen man reinlässt. Momentan lassen alle rein)
     app.use(cors(corsOptions));
-
-    app.options(/(.*)/, cors(corsOptions));
-
-
     //nur json-Format Anfragen
     app.use(express.json())
 
-    //"Rerouting" (bearbeitet Anfragen)
+
+    app.use('/chat', apiKeyMiddleware);
     app.use(routes);
 
     return app
