@@ -18,7 +18,6 @@ import express, { Application, Request, Response, NextFunction } from 'express'
 import cors from 'cors';
 import routes from './routes';
 import dotenv from 'dotenv';
-import  {apiKeyMiddleware } from './middleware/auth'
 
 dotenv.config();
 
@@ -30,7 +29,7 @@ export function createApp(): Application {
         origin: true,
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-        allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept', 'x-api-key']
+        allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'Accept']
     };
 
     app.use((req, res, next) => {
@@ -44,7 +43,6 @@ export function createApp(): Application {
     app.use(express.json())
 
 
-    app.use('/chat', apiKeyMiddleware);
     app.use(routes);
 
     return app
