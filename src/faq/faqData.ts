@@ -35,7 +35,7 @@ export const faqDataBase: FAQItem[] = [
     {
         id:"upload_receipt",
         keywords: ['hochladen', 'beleg', 'upload', 'rechnung', 'foto', 'drag', 'drop', 'pdf', 'jpg', 'png'],
-        answer: "Öffnen Sie den Upload-Bereich (oder 'Transaktionen'). Ziehen Sie PDF/JPG/PNG per Drag & Drop hinein oder wählen Sie sie über das Dialogfeld aus. Nach dem Hochladen wird die Texterkennung (OCR) automatisch gestartet.",
+        answer: "Klicken Sie auf '+ Neu'. Ziehen Sie PDF/JPG/PNG per Drag & Drop hinein oder wählen Sie sie über das Dialogfeld aus. Nach dem Hochladen wird die Texterkennung (OCR) automatisch gestartet.",
         /*action: {
             type: 'link',
             payload: '/upload',
@@ -54,7 +54,7 @@ export const faqDataBase: FAQItem[] = [
     {
         id:"filter_time",
         keywords: ['zeitraum', 'datum', 'wann', 'filter', 'anzeigen', 'von bis'],
-        answer: "Um nur Transaktionen aus einem bestimmten Zeitraum zu sehen, nutzen Sie den Datumsfilter (von/bis) oben auf der Seite 'Transaktionen'."
+        answer: "Momentan haben wir keine direkten Filter-Funktionen für Zeiträume, aber Sie können die Monats-Navigation oben auf der Seite nutzen, um zwischen verschiedenen Monaten zu wechseln."
     },
 
     // 4. Duplikate
@@ -68,7 +68,7 @@ export const faqDataBase: FAQItem[] = [
     {
         id:"manual_entry",
         keywords: ['manuell', 'ohne datei', 'per hand', 'eintippen', 'neu', 'erfassen'],
-        answer: "Um eine Transaktion ohne Datei zu erfassen: Klicken Sie in 'Transaktionen' auf 'Neu' und füllen Sie Datum, Betrag, Währung und Händler manuell aus.",
+        answer: "Um eine Transaktion ohne Datei zu erfassen: Klicken Sie auf '+ Neu' und füllen Sie Datum, Betrag, Währung und Händler manuell aus.",
         /*action: {
             type: 'link',
             payload: '/accounts/{accountId}/transactions?create=1',
@@ -80,21 +80,21 @@ export const faqDataBase: FAQItem[] = [
     {
         id:"dealer/category_filter",
         keywords: ['händler', 'kategorie', 'filtern', 'suchen', 'sortieren'],
-        answer: "Sie können die Filter 'Händler' oder 'Kategorie' oben in der Transaktionsliste verwenden, um spezifische Ausgaben zu finden."
+        answer: "Momentan haben wir keine spezifischen Filter-Funktionen für Händler oder Kategorien, aber Sie sehen eine automatische Gruppierung nach Kategorien direkt in Ihrer Ausgaben-Übersicht."
     },
 
     // 7. Auswertungen / Report
     {
         id:"evaluations/report",
         keywords: ['auswertung', 'trend', 'diagramm', 'chart', 'statistik', 'report', 'analyse'],
-        answer: "Auswertungen finden Sie im Bereich 'Report'. Dort gibt es Diagramme nach Zeitraum und Kategorie, um Ihre Trends zu analysieren."
+        answer: "Auswertungen finden Sie im Bereich 'Ausgaben'. Dort gibt es Diagramme nach Zeitraum und Kategorie, um Ihre Trends zu analysieren."
     },
 
     // 8. Export
     {
         id:"export_data",
         keywords: ['export', 'csv', 'pdf', 'download', 'herunterladen', 'speichern'],
-        answer: "Öffnen Sie den Bereich 'Export', wählen Sie das Format (CSV/PDF) und den Zeitraum.",
+        answer: "Momentan haben wir keine Export-Funktionen für CSV oder PDF, aber wir arbeiten daran, diese für zukünftige Versionen bereitzustellen.",
         /*action: {
             type: 'api',
             payload: 'OST /export/csv',
@@ -106,14 +106,14 @@ export const faqDataBase: FAQItem[] = [
     {
         id:"map",
         keywords: ['karte', 'map', 'ort', 'wo', 'location', 'standort'],
-        answer: "Ihre Einkäufe können Sie geografisch im Bereich 'Karte' (Map) ansehen."
+        answer: "Momentan haben wir keine Karten-Funktionen (Map), aber wir arbeiten daran, diese für zukünftige Versionen bereitzustellen."    
     },
 
     // 10. Person einladen
     {
         id:"invite_member",
         keywords: ['einladen', 'person', 'freund', 'mitglied', 'teilen', 'gemeinsam'],
-        answer: "Gehen Sie zu 'Mitglieder'. Geben Sie dort E-Mail und Rolle an. Es wird ein Einmal-Link per E-Mail versendet.",
+        answer: "Momentan haben wir keine Funktionen, um andere Personen in Konto einzuladen, aber wir arbeiten daran, diese für zukünftige Versionen bereitzustellen."        
         /*action: {
             type: 'link',
             payload: '/accounts/{accountId}/members?tab=invite',
@@ -122,14 +122,14 @@ export const faqDataBase: FAQItem[] = [
     },
 
     // 11. Einladung Probleme
-    {
+    /*{
         id:"",
         keywords: ['einladung geht nicht', 'link abgelaufen', 'funktioniert nicht', 'keine mail'],
         answer: "Wenn die Einladung nicht funktioniert: Möglicherweise ist der Link abgelaufen (TTL) oder die E-Mail ist noch nicht verifiziert. Bitte senden Sie die Einladung erneut."
-    },
+    },*/
 
     // 12. Rolle ändern
-    {
+    /*{
         id:"invitation_problems",
         keywords: ['rolle', 'rechte', 'admin', 'editor', 'viewer', 'ändern', 'zugriff'],
         answer: "Um eine Rolle zu ändern (z.B. Viewer zu Editor): Wählen Sie in 'Mitglieder' die Person aus und aktualisieren Sie die Rolle. Das können nur Admins oder Owner. ",
@@ -137,27 +137,27 @@ export const faqDataBase: FAQItem[] = [
             type: 'link',
             payload: '/accounts/{accountId}/members?userId={userId}',
             label: 'Rolle ändern'
-        }*/
-    },
+        }
+    },*/
 
     // 13. Benachrichtigungen
-    {
+    /*{
         id:"notifications",
         keywords: ['benachrichtigung', 'mail', 'email', 'notifikation', 'einstellen', 'aktivieren'],
         answer: "E-Mail-Benachrichtigungen können Sie in den 'Einstellungen' unter 'Notifications' für gewünschte Events einschalten." ,
-        /*action: {
+        action: {
             type: 'link',
             payload: '/accounts/{accountId}/members?userId={userId}',
             label: 'Rolle ändern'
-        }*/
-    },
+        }
+    },*/
 
     // 14. Location zuordnen
-    {
+    /*{
         id:"location_assign",
         keywords: ['adresse', 'falscher ort', 'zuordnen', 'location ändern'],
         answer: "Um einer Transaktion den richtigen Ort zuzuordnen: Öffnen Sie die Transaktion, klicken Sie auf 'Bearbeiten' und wählen Sie die Adresse/den Ort aus."
-    },
+    },*/
 
     // 15. OCR Korrektur
     {
