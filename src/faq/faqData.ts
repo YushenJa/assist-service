@@ -36,11 +36,11 @@ export const faqDataBase: FAQItem[] = [
         id:"upload_receipt",
         keywords: ['hochladen', 'beleg', 'upload', 'rechnung', 'foto', 'drag', 'drop', 'pdf', 'jpg', 'png'],
         answer: "Öffnen Sie den Upload-Bereich (oder 'Transaktionen'). Ziehen Sie PDF/JPG/PNG per Drag & Drop hinein oder wählen Sie sie über das Dialogfeld aus. Nach dem Hochladen wird die Texterkennung (OCR) automatisch gestartet.",
-        action: {
+        /*action: {
             type: 'link',
             payload: '/upload',
             label: 'Zum Upload'
-        }
+        }*/
     },
 
     // 2. OCR Fehler
@@ -69,11 +69,11 @@ export const faqDataBase: FAQItem[] = [
         id:"manual_entry",
         keywords: ['manuell', 'ohne datei', 'per hand', 'eintippen', 'neu', 'erfassen'],
         answer: "Um eine Transaktion ohne Datei zu erfassen: Klicken Sie in 'Transaktionen' auf 'Neu' und füllen Sie Datum, Betrag, Währung und Händler manuell aus.",
-        action: {
+        /*action: {
             type: 'link',
             payload: '/accounts/{accountId}/transactions?create=1',
             label: 'Transaktion erstellen'
-        }
+        }*/
     },
 
     // 6. Händler/Kategorie Filter
@@ -95,11 +95,11 @@ export const faqDataBase: FAQItem[] = [
         id:"export_data",
         keywords: ['export', 'csv', 'pdf', 'download', 'herunterladen', 'speichern'],
         answer: "Öffnen Sie den Bereich 'Export', wählen Sie das Format (CSV/PDF) und den Zeitraum.",
-        action: {
+        /*action: {
             type: 'api',
             payload: 'OST /export/csv',
             label: 'Export starten'
-        }
+        }*/
     },
 
     // 9. Karte / Map
@@ -114,11 +114,11 @@ export const faqDataBase: FAQItem[] = [
         id:"invite_member",
         keywords: ['einladen', 'person', 'freund', 'mitglied', 'teilen', 'gemeinsam'],
         answer: "Gehen Sie zu 'Mitglieder'. Geben Sie dort E-Mail und Rolle an. Es wird ein Einmal-Link per E-Mail versendet.",
-        action: {
+        /*action: {
             type: 'link',
             payload: '/accounts/{accountId}/members?tab=invite',
             label: 'Mitglied einladen'
-        }
+        }*/
     },
 
     // 11. Einladung Probleme
@@ -133,11 +133,11 @@ export const faqDataBase: FAQItem[] = [
         id:"invitation_problems",
         keywords: ['rolle', 'rechte', 'admin', 'editor', 'viewer', 'ändern', 'zugriff'],
         answer: "Um eine Rolle zu ändern (z.B. Viewer zu Editor): Wählen Sie in 'Mitglieder' die Person aus und aktualisieren Sie die Rolle. Das können nur Admins oder Owner. ",
-        action: {
+        /*action: {
             type: 'link',
             payload: '/accounts/{accountId}/members?userId={userId}',
             label: 'Rolle ändern'
-        }    
+        }*/
     },
 
     // 13. Benachrichtigungen
@@ -145,11 +145,11 @@ export const faqDataBase: FAQItem[] = [
         id:"notifications",
         keywords: ['benachrichtigung', 'mail', 'email', 'notifikation', 'einstellen', 'aktivieren'],
         answer: "E-Mail-Benachrichtigungen können Sie in den 'Einstellungen' unter 'Notifications' für gewünschte Events einschalten." ,
-        action: {
+        /*action: {
             type: 'link',
             payload: '/accounts/{accountId}/members?userId={userId}',
             label: 'Rolle ändern'
-        } 
+        }*/
     },
 
     // 14. Location zuordnen
