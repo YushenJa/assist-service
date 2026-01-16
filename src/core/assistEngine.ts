@@ -122,7 +122,7 @@ export async function generateResp (prompt: string, sessionID: string = 'default
         ${contextInfo}
 
         [FRAGE DES NUTZERS]: ${prompt}
-        Nutze die [FESTSTEHENDE ANTWORT] oben. Wenn ein [LINK] vorhanden ist, gib ihn dem Nutzer.
+        Nutze die [FESTSTEHENDE ANTWORT] oben.
       `;
     } else {
       finalPrompt = `
